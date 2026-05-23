@@ -1,0 +1,822 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Wo Hop Restaurant — Since 1938 | Chinatown, New York</title>
+<meta name="description" content="Wo Hop — New York's legendary Cantonese restaurant since 1938. James Beard Award winner. Authentic Cantonese cuisine at 17 Mott St, Chinatown NYC.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://images.unsplash.com" crossorigin>
+<link rel="dns-prefetch" href="https://images.unsplash.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700&family=Inter:wght@300;400;500;600&family=Noto+Serif+SC:wght@400;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<!-- LOADER -->
+<div id="loader">
+  <div class="loader-inner">
+    <div class="loader-char">和</div>
+    <div class="loader-bar"><div class="loader-fill"></div></div>
+    <div class="loader-text">Wo Hop Restaurant</div>
+  </div>
+</div>
+
+<!-- 3D FOOD VIEWER MODAL -->
+<div id="food3dViewer" class="food-3d-overlay" role="dialog" aria-modal="true" aria-label="3D Food Viewer">
+  <button class="f3d-close" id="f3dClose" aria-label="Close">✕</button>
+  <div class="f3d-backdrop"></div>
+  <div class="f3d-content">
+    <div class="f3d-scene">
+      <div class="f3d-card-wrap">
+        <div class="f3d-glow-ring"></div>
+        <div class="f3d-card" id="f3dCard">
+          <img src="" id="f3dImg" alt="" draggable="false">
+          <div class="f3d-shine"></div>
+          <div class="f3d-rim"></div>
+        </div>
+      </div>
+      <div class="f3d-platform">
+        <div class="f3d-pedestal-line"></div>
+        <div class="f3d-platform-glow"></div>
+      </div>
+    </div>
+    <div class="f3d-info">
+      <h3 id="f3dTitle"></h3>
+      <p id="f3dDesc"></p>
+      <span class="f3d-price" id="f3dPrice"></span>
+    </div>
+    <div class="f3d-hint">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M7 11.5V14m0-2.5V6a1.5 1.5 0 113 0m-3 5.5a1.5 1.5 0 00-3 0V14a6 6 0 006 6h2a5 5 0 005-5v-3a1.5 1.5 0 00-3 0m-6-3V11m0-5.5v-1a1.5 1.5 0 013 0v1m0 0V11m0-5.5a1.5 1.5 0 013 0V11"/></svg>
+      Drag to rotate &nbsp;·&nbsp;
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="10"/><path d="M12 8v4m0 4h.01"/></svg>
+      Scroll to zoom
+    </div>
+  </div>
+</div>
+
+<!-- NAV -->
+<nav id="nav">
+  <div class="nav-inner">
+    <a href="#" class="nav-logo">
+      <span class="logo-cn">和合</span>
+      <span class="logo-en">WO HOP</span>
+      <span class="logo-year">EST. 1938</span>
+    </a>
+    <ul class="nav-links">
+      <li><a href="#about">Our Story</a></li>
+      <li><a href="#menu">Menu</a></li>
+      <li><a href="#dishes">Signature Dishes</a></li>
+      <li><a href="#gallery">Gallery</a></li>
+      <li><a href="#contact">Visit Us</a></li>
+      <li><a href="#order" class="nav-cta">Order Now</a></li>
+    </ul>
+    <button class="nav-hamburger" id="hamburger" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+
+<!-- MOBILE MENU -->
+<div class="mobile-menu" id="mobileMenu">
+  <ul>
+    <li><a href="#about" class="mm-link">Our Story</a></li>
+    <li><a href="#menu" class="mm-link">Menu</a></li>
+    <li><a href="#dishes" class="mm-link">Signature Dishes</a></li>
+    <li><a href="#gallery" class="mm-link">Gallery</a></li>
+    <li><a href="#contact" class="mm-link">Visit Us</a></li>
+    <li><a href="#order" class="mm-link mm-cta">Order Now</a></li>
+  </ul>
+</div>
+
+<!-- HERO -->
+<section id="hero">
+  <div class="hero-bg">
+    <div class="hero-particles" id="particles"></div>
+    <div class="hero-gradient"></div>
+  </div>
+  <div class="hero-content">
+    <div class="hero-badge reveal">
+      <span class="badge-icon">★</span>
+      James Beard Award — America's Classic 2022
+      <span class="badge-icon">★</span>
+    </div>
+    <h1 class="hero-title reveal">
+      <span class="title-cn">和合</span>
+      <span class="title-main">WO HOP</span>
+      <span class="title-sub">NEW YORK'S LEGENDARY CANTONESE TABLE</span>
+    </h1>
+    <p class="hero-desc reveal">Serving soulful Cantonese cuisine from the heart of Chinatown since 1938. Three generations of the Huang family. One timeless kitchen.</p>
+    <div class="hero-actions reveal">
+      <a href="#menu" class="btn-primary">Explore Menu</a>
+      <a href="#order" class="btn-ghost">Order Online</a>
+    </div>
+    <div class="hero-stats reveal">
+      <div class="stat"><span class="stat-num">87</span><span class="stat-label">Years of Heritage</span></div>
+      <div class="stat-divider"></div>
+      <div class="stat"><span class="stat-num">3rd</span><span class="stat-label">Generation Family</span></div>
+      <div class="stat-divider"></div>
+      <div class="stat"><span class="stat-num">#1</span><span class="stat-label">Chinatown Icon</span></div>
+    </div>
+  </div>
+  <div class="hero-scroll">
+    <span>Scroll</span>
+    <div class="scroll-line"></div>
+  </div>
+</section>
+
+<!-- AWARD BANNER -->
+<div class="award-banner">
+  <div class="award-inner">
+    <div class="award-item"><svg viewBox="0 0 40 40" fill="none"><circle cx="20" cy="20" r="18" stroke="#D4AF37" stroke-width="2"/><text x="20" y="26" text-anchor="middle" fill="#D4AF37" font-size="16">★</text></svg><span>James Beard Foundation — America's Classic Award 2022</span></div>
+    <div class="award-item"><svg viewBox="0 0 40 40" fill="none"><circle cx="20" cy="20" r="18" stroke="#D4AF37" stroke-width="2"/><text x="20" y="26" text-anchor="middle" fill="#D4AF37" font-size="16">✦</text></svg><span>New York Times Featured — An Authentic Taste of an Inauthentic Past</span></div>
+    <div class="award-item"><svg viewBox="0 0 40 40" fill="none"><circle cx="20" cy="20" r="18" stroke="#D4AF37" stroke-width="2"/><text x="20" y="26" text-anchor="middle" fill="#D4AF37" font-size="16">♦</text></svg><span>Second Oldest Restaurant in Manhattan's Chinatown</span></div>
+    <div class="award-item"><svg viewBox="0 0 40 40" fill="none"><circle cx="20" cy="20" r="18" stroke="#D4AF37" stroke-width="2"/><text x="20" y="26" text-anchor="middle" fill="#D4AF37" font-size="16">★</text></svg><span>James Beard Foundation — America's Classic Award 2022</span></div>
+    <div class="award-item"><svg viewBox="0 0 40 40" fill="none"><circle cx="20" cy="20" r="18" stroke="#D4AF37" stroke-width="2"/><text x="20" y="26" text-anchor="middle" fill="#D4AF37" font-size="16">✦</text></svg><span>New York Times Featured — An Authentic Taste of an Inauthentic Past</span></div>
+    <div class="award-item"><svg viewBox="0 0 40 40" fill="none"><circle cx="20" cy="20" r="18" stroke="#D4AF37" stroke-width="2"/><text x="20" y="26" text-anchor="middle" fill="#D4AF37" font-size="16">♦</text></svg><span>Second Oldest Restaurant in Manhattan's Chinatown</span></div>
+  </div>
+</div>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="about-container">
+    <div class="about-visual">
+      <div class="about-img-frame reveal-left">
+        <div class="about-img-inner">
+          <div class="about-mott-street">
+            <div class="street-building b1">
+              <div class="building-windows">
+                <div class="win"></div><div class="win"></div><div class="win lit"></div>
+                <div class="win lit"></div><div class="win"></div><div class="win"></div>
+              </div>
+              <div class="building-sign">17 MOTT ST</div>
+            </div>
+            <div class="street-steps">
+              <div class="step s1"></div><div class="step s2"></div><div class="step s3"></div>
+              <div class="door-glow"></div>
+              <div class="neon-sign">WO HOP</div>
+            </div>
+            <div class="street-lamp">
+              <div class="lamp-post"></div><div class="lamp-head"></div><div class="lamp-glow"></div>
+            </div>
+          </div>
+        </div>
+        <div class="about-badge-float">
+          <span class="abf-year">1938</span>
+          <span class="abf-label">Founded</span>
+        </div>
+      </div>
+    </div>
+    <div class="about-text">
+      <div class="section-eyebrow reveal">Our Heritage</div>
+      <h2 class="section-title reveal">A Story Told<br><em>In Every Bowl</em></h2>
+      <p class="about-p reveal">Tucked beneath the sidewalks of 17 Mott Street, Wo Hop has been feeding New Yorkers since 1938. What began as a humble Cantonese kitchen became a multigenerational institution — a place where cab drivers, artists, judges, and celebrities share the same small tables and the same extraordinary food.</p>
+      <p class="about-p reveal">Now in its third generation under the Huang family, guided today by David Leung, Wo Hop earned the James Beard Foundation's America's Classic Award in 2022 — culinary America's highest honor for restaurants that embody the character of their communities.</p>
+      <p class="about-p reveal">The menu hasn't changed much since the 1940s, and that's exactly the point. Some things shouldn't.</p>
+      <div class="about-pillars reveal">
+        <div class="pillar"><div class="pillar-icon">家</div><div class="pillar-label">Family Owned</div></div>
+        <div class="pillar"><div class="pillar-icon">真</div><div class="pillar-label">Authentic</div></div>
+        <div class="pillar"><div class="pillar-icon">傳</div><div class="pillar-label">Legacy</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SIGNATURE DISHES -->
+<section id="dishes">
+  <div class="dishes-container">
+    <div class="section-header">
+      <div class="section-eyebrow reveal">Hover to See in 3D</div>
+      <h2 class="section-title reveal">Signature <em>Dishes</em></h2>
+      <p class="section-sub reveal">Hover any dish to see it in 3D · Click for full immersive view</p>
+    </div>
+    <div class="dishes-grid">
+
+      <!-- Wonton Soup -->
+      <div class="dish-card reveal" data-delay="0"
+           data-img="https://images.unsplash.com/photo-1569050467447-ce54b3bbc37d?auto=format&fit=crop&w=800&q=75"
+           data-img-lg="https://images.unsplash.com/photo-1569050467447-ce54b3bbc37d?auto=format&fit=crop&w=1200&q=85"
+           data-name="Roast Pork Wonton Soup"
+           data-desc="Silky hand-folded wontons in a rich, amber broth with tender roast pork. The dish that has defined Wo Hop since 1938."
+           data-price="From $4.50">
+        <div class="dish-visual">
+          <div class="dish-css-art">
+            <div class="dish-3d-bowl">
+              <div class="d3-bowl-outer"><div class="d3-bowl-inner"><div class="d3-broth"></div><div class="d3-wonton dw1"></div><div class="d3-wonton dw2"></div><div class="d3-scallion"></div><div class="d3-steam ds1"></div><div class="d3-steam ds2"></div></div></div>
+              <div class="d3-bowl-bottom"></div><div class="d3-bowl-shadow"></div>
+            </div>
+          </div>
+          <div class="dish-img-3d">
+            <img class="dish-real-img" data-src="https://images.unsplash.com/photo-1569050467447-ce54b3bbc37d?auto=format&fit=crop&w=800&q=75" alt="Roast Pork Wonton Soup" draggable="false">
+            <div class="dir-shine"></div>
+            <div class="dir-rim"></div>
+            <div class="dir-platform-glow"></div>
+          </div>
+          <div class="dish-hover-hint">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0zM10 7v3m0 0v3m0-3h3m-3 0H7"/></svg>
+            Click for full 3D view
+          </div>
+        </div>
+        <div class="dish-info">
+          <h3>Roast Pork Wonton Soup</h3>
+          <p>Silky hand-folded wontons in a rich amber broth with tender roast pork. The dish that has defined Wo Hop since 1938.</p>
+          <div class="dish-footer">
+            <span class="dish-price">From $4.50</span>
+            <span class="dish-tag">House Classic</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Beef Chow Fun -->
+      <div class="dish-card reveal" data-delay="100"
+           data-img="https://images.unsplash.com/photo-1585032226651-759b368d7246?auto=format&fit=crop&w=800&q=75"
+           data-img-lg="https://images.unsplash.com/photo-1585032226651-759b368d7246?auto=format&fit=crop&w=1200&q=85"
+           data-name="Beef Chow Fun"
+           data-desc="Wide rice noodles expertly tossed in a blazing wok with tender beef and scallions. The wok hei is unmistakable."
+           data-price="$11.95">
+        <div class="dish-visual dv-dark">
+          <div class="dish-css-art">
+            <div class="dish-3d-wok">
+              <div class="d3-wok-body"><div class="d3-noodles"></div><div class="d3-beef-strip bs1"></div><div class="d3-beef-strip bs2"></div><div class="d3-steam ds1"></div></div>
+              <div class="d3-wok-shadow"></div>
+            </div>
+          </div>
+          <div class="dish-img-3d">
+            <img class="dish-real-img" data-src="https://images.unsplash.com/photo-1585032226651-759b368d7246?auto=format&fit=crop&w=800&q=75" alt="Beef Chow Fun" draggable="false">
+            <div class="dir-shine"></div><div class="dir-rim"></div><div class="dir-platform-glow"></div>
+          </div>
+          <div class="dish-hover-hint"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/></svg>Click for full 3D view</div>
+        </div>
+        <div class="dish-info">
+          <h3>Beef Chow Fun</h3>
+          <p>Wide rice noodles expertly tossed in a blazing wok with tender beef and scallions. The wok hei is unmistakable.</p>
+          <div class="dish-footer"><span class="dish-price">$11.95</span><span class="dish-tag">Staff Favorite</span></div>
+        </div>
+      </div>
+
+      <!-- Egg Foo Young -->
+      <div class="dish-card reveal" data-delay="200"
+           data-img="https://images.unsplash.com/photo-1568901346375-23c9450c58cd?auto=format&fit=crop&w=800&q=75"
+           data-img-lg="https://images.unsplash.com/photo-1568901346375-23c9450c58cd?auto=format&fit=crop&w=1200&q=85"
+           data-name="Egg Foo Young"
+           data-desc="Lightly golden omelets filled with bean sprouts, onion, and choice of meat, crowned with silky warm gravy."
+           data-price="~$15.95">
+        <div class="dish-visual dv-gold">
+          <div class="dish-css-art">
+            <div class="dish-3d-efy">
+              <div class="d3-plate-efy"><div class="d3-efy-patty ep1"></div><div class="d3-efy-patty ep2"></div><div class="d3-efy-gravy"></div><div class="d3-steam ds1"></div></div>
+              <div class="d3-efy-shadow"></div>
+            </div>
+          </div>
+          <div class="dish-img-3d">
+            <img class="dish-real-img" data-src="https://images.unsplash.com/photo-1568901346375-23c9450c58cd?auto=format&fit=crop&w=800&q=75" alt="Egg Foo Young" draggable="false">
+            <div class="dir-shine"></div><div class="dir-rim"></div><div class="dir-platform-glow"></div>
+          </div>
+          <div class="dish-hover-hint"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/></svg>Click for full 3D view</div>
+        </div>
+        <div class="dish-info">
+          <h3>Egg Foo Young</h3>
+          <p>Lightly golden omelets filled with bean sprouts, onion, and choice of meat, crowned with silky warm gravy.</p>
+          <div class="dish-footer"><span class="dish-price">~$15.95</span><span class="dish-tag">Since 1938</span></div>
+        </div>
+      </div>
+
+      <!-- BBQ Spareribs -->
+      <div class="dish-card reveal" data-delay="300"
+           data-img="https://images.unsplash.com/photo-1544025162-d76538b2a5e6?auto=format&fit=crop&w=800&q=75"
+           data-img-lg="https://images.unsplash.com/photo-1544025162-d76538b2a5e6?auto=format&fit=crop&w=1200&q=85"
+           data-name="BBQ Spareribs"
+           data-desc="Char-kissed ribs lacquered in Cantonese-style sweet barbecue glaze. Crisp outside, tender within."
+           data-price="$14.95">
+        <div class="dish-visual dv-red">
+          <div class="dish-css-art">
+            <div class="dish-3d-ribs">
+              <div class="d3-ribs-plate"><div class="d3-rib r1"></div><div class="d3-rib r2"></div><div class="d3-rib r3"></div><div class="d3-rib r4"></div><div class="d3-rib r5"></div></div>
+              <div class="d3-ribs-shadow"></div>
+            </div>
+          </div>
+          <div class="dish-img-3d">
+            <img class="dish-real-img" data-src="https://images.unsplash.com/photo-1544025162-d76538b2a5e6?auto=format&fit=crop&w=800&q=75" alt="BBQ Spareribs" draggable="false">
+            <div class="dir-shine"></div><div class="dir-rim"></div><div class="dir-platform-glow"></div>
+          </div>
+          <div class="dish-hover-hint"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/></svg>Click for full 3D view</div>
+        </div>
+        <div class="dish-info">
+          <h3>BBQ Spareribs</h3>
+          <p>Char-kissed ribs lacquered in Cantonese-style sweet barbecue glaze. Crisp outside, tender within. A perennial bestseller.</p>
+          <div class="dish-footer"><span class="dish-price">$14.95</span><span class="dish-tag">Bestseller</span></div>
+        </div>
+      </div>
+
+      <!-- Cold Sesame Noodles -->
+      <div class="dish-card reveal" data-delay="100"
+           data-img="https://images.unsplash.com/photo-1547592166-23ac45744acd?auto=format&fit=crop&w=800&q=75"
+           data-img-lg="https://images.unsplash.com/photo-1547592166-23ac45744acd?auto=format&fit=crop&w=1200&q=85"
+           data-name="Cold Sesame Noodles"
+           data-desc="Chilled noodles draped in a nutty sesame-rich sauce with julienned cucumber. A Chinatown summer staple."
+           data-price="$8.95">
+        <div class="dish-visual dv-amber">
+          <div class="dish-css-art">
+            <div class="dish-3d-noodles">
+              <div class="d3-noodle-bowl"><div class="d3-nb-inner"><div class="d3-sesame-noodle sn1"></div><div class="d3-sesame-noodle sn2"></div><div class="d3-sesame-noodle sn3"></div><div class="d3-sesame-sauce"></div><div class="d3-cucumber"></div></div></div>
+              <div class="d3-noodle-shadow"></div>
+            </div>
+          </div>
+          <div class="dish-img-3d">
+            <img class="dish-real-img" data-src="https://images.unsplash.com/photo-1547592166-23ac45744acd?auto=format&fit=crop&w=800&q=75" alt="Cold Sesame Noodles" draggable="false">
+            <div class="dir-shine"></div><div class="dir-rim"></div><div class="dir-platform-glow"></div>
+          </div>
+          <div class="dish-hover-hint"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/></svg>Click for full 3D view</div>
+        </div>
+        <div class="dish-info">
+          <h3>Cold Sesame Noodles</h3>
+          <p>Chilled noodles draped in a nutty sesame-rich sauce with julienned cucumber. A Chinatown summer staple.</p>
+          <div class="dish-footer"><span class="dish-price">$8.95</span><span class="dish-tag">Fan Favorite</span></div>
+        </div>
+      </div>
+
+      <!-- General Tso's Chicken -->
+      <div class="dish-card reveal" data-delay="200"
+           data-img="https://images.unsplash.com/photo-1604908176997-125f25cc6f3d?auto=format&fit=crop&w=800&q=75"
+           data-img-lg="https://images.unsplash.com/photo-1604908176997-125f25cc6f3d?auto=format&fit=crop&w=1200&q=85"
+           data-name="General Tso's Chicken"
+           data-desc="Crispy chicken tossed in a bold sweet-spicy glaze with dried chilies. The dish that made Chinese-American cuisine legendary."
+           data-price="$17.95">
+        <div class="dish-visual dv-crimson">
+          <div class="dish-css-art">
+            <div class="dish-3d-tso">
+              <div class="d3-tso-plate"><div class="d3-tso-piece tp1"></div><div class="d3-tso-piece tp2"></div><div class="d3-tso-piece tp3"></div><div class="d3-tso-piece tp4"></div><div class="d3-tso-glaze"></div></div>
+              <div class="d3-tso-shadow"></div>
+            </div>
+          </div>
+          <div class="dish-img-3d">
+            <img class="dish-real-img" data-src="https://images.unsplash.com/photo-1604908176997-125f25cc6f3d?auto=format&fit=crop&w=800&q=75" alt="General Tso's Chicken" draggable="false">
+            <div class="dir-shine"></div><div class="dir-rim"></div><div class="dir-platform-glow"></div>
+          </div>
+          <div class="dish-hover-hint"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/></svg>Click for full 3D view</div>
+        </div>
+        <div class="dish-info">
+          <h3>General Tso's Chicken</h3>
+          <p>Crispy chicken tossed in a bold sweet-spicy glaze with dried chilies. The dish that made Chinese-American cuisine legendary.</p>
+          <div class="dish-footer"><span class="dish-price">$17.95</span><span class="dish-tag">American Classic</span></div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- MENU -->
+<section id="menu">
+  <div class="menu-container">
+    <div class="section-header">
+      <div class="section-eyebrow reveal">Full Menu</div>
+      <h2 class="section-title reveal">The Complete <em>Kitchen</em></h2>
+      <p class="section-sub reveal">Every dish prepared with the same care since 1938. Cash only.</p>
+    </div>
+    <div class="menu-tabs reveal">
+      <button class="tab active" data-tab="appetizers">Appetizers</button>
+      <button class="tab" data-tab="soups">Soups</button>
+      <button class="tab" data-tab="noodles">Noodles</button>
+      <button class="tab" data-tab="rice">Rice</button>
+      <button class="tab" data-tab="poultry">Poultry</button>
+      <button class="tab" data-tab="beef">Beef</button>
+      <button class="tab" data-tab="pork">Pork</button>
+      <button class="tab" data-tab="seafood">Seafood</button>
+      <button class="tab" data-tab="szechuan">Szechuan</button>
+      <button class="tab" data-tab="specialties">Specialties</button>
+    </div>
+    <div class="menu-panels">
+      <div class="menu-panel active" id="tab-appetizers">
+        <div class="menu-grid">
+          <div class="menu-item"><span class="mi-name">BarBQ Ribs (5)</span><span class="mi-price">$14.95</span></div>
+          <div class="menu-item"><span class="mi-name">BarBQ Ribs — Boneless</span><span class="mi-price">$14.95</span></div>
+          <div class="menu-item"><span class="mi-name">Roast Pork</span><span class="mi-price">$13.95</span></div>
+          <div class="menu-item"><span class="mi-name">Fantail Shrimps (4)</span><span class="mi-price">$12.95</span></div>
+          <div class="menu-item"><span class="mi-name">Fried Wontons (12)</span><span class="mi-price">$9.50</span></div>
+          <div class="menu-item"><span class="mi-name">Cold Sesame Noodles</span><span class="mi-price">$8.95</span></div>
+          <div class="menu-item"><span class="mi-name">Roast Duck</span><span class="mi-price">$16.95</span></div>
+          <div class="menu-item"><span class="mi-name">Fried Chicken Wings (6)</span><span class="mi-price">$15.95</span></div>
+          <div class="menu-item"><span class="mi-name">Fried Dumplings (6)</span><span class="mi-price">$10.50</span></div>
+          <div class="menu-item"><span class="mi-name">Vegetarian Egg Rolls (2)</span><span class="mi-price">$8.00</span></div>
+          <div class="menu-item"><span class="mi-name">Egg Rolls (2)</span><span class="mi-price">$9.00</span></div>
+          <div class="menu-item"><span class="mi-name">Steamed Dumplings (6)</span><span class="mi-price">$9.95</span></div>
+          <div class="menu-item"><span class="mi-name">Crispy Noodles</span><span class="mi-price">$1.75</span></div>
+        </div>
+      </div>
+      <div class="menu-panel" id="tab-soups">
+        <div class="menu-grid">
+          <div class="menu-item"><span class="mi-name">Roast Pork Wontons</span><span class="mi-price">Sm $4.50 / Lg $7.95</span></div>
+          <div class="menu-item"><span class="mi-name">Egg Drop</span><span class="mi-price">Sm $4.50 / Lg $7.50</span></div>
+          <div class="menu-item"><span class="mi-name">Wonton &amp; Egg Drop</span><span class="mi-price">Sm $4.50 / Lg $7.95</span></div>
+          <div class="menu-item"><span class="mi-name">Hot &amp; Sour</span><span class="mi-price">Sm $4.50 / Lg $7.50</span></div>
+          <div class="menu-item"><span class="mi-name">Chicken &amp; Corn</span><span class="mi-price">Sm $4.50 / Lg $7.95</span></div>
+          <div class="menu-item"><span class="mi-name">Won Ton Soup w/ Beef</span><span class="mi-price">$9.50</span></div>
+          <div class="menu-item"><span class="mi-name">Won Ton Soup w/ Roast Duck</span><span class="mi-price">$12.95</span></div>
+          <div class="menu-item"><span class="mi-name">Won Ton Soup w/ Chicken</span><span class="mi-price">$7.95</span></div>
+          <div class="menu-item"><span class="mi-name">Won Ton Soup w/ Fresh Shrimp</span><span class="mi-price">$9.50</span></div>
+          <div class="menu-item"><span class="mi-name">Suey Kow (Dumpling) Soup</span><span class="mi-price">$9.95</span></div>
+          <div class="menu-item"><span class="mi-name">Vegetable Soup</span><span class="mi-price">$7.50</span></div>
+          <div class="menu-item"><span class="mi-name">Tofu Soup</span><span class="mi-price">$7.50</span></div>
+          <div class="menu-item"><span class="mi-name">Young Chow Noodle (For 2)</span><span class="mi-price">$14.95</span></div>
+          <div class="menu-item"><span class="mi-name">Young Chow Wor Wonton (For 2)</span><span class="mi-price">$14.95</span></div>
+          <div class="menu-item"><span class="mi-name">Young Chow Dumplings (For 2)</span><span class="mi-price">$15.95</span></div>
+          <div class="menu-item"><span class="mi-name">Noodle Soup w/ Roast Pork</span><span class="mi-price">$7.95</span></div>
+          <div class="menu-item"><span class="mi-name">Noodle Soup w/ Roast Duck</span><span class="mi-price">$12.95</span></div>
+          <div class="menu-item"><span class="mi-name">Noodle Soup w/ Chicken</span><span class="mi-price">$7.95</span></div>
+          <div class="menu-item"><span class="mi-name">Noodle Soup w/ Beef</span><span class="mi-price">$9.50</span></div>
+          <div class="menu-item"><span class="mi-name">Assorted Seafood &amp; Tofu</span><span class="mi-price">$15.95</span></div>
+        </div>
+      </div>
+      <div class="menu-panel" id="tab-noodles">
+        <div class="menu-category-label">Lo Mein — Soft Noodles</div>
+        <div class="menu-grid">
+          <div class="menu-item"><span class="mi-name">Ginger &amp; Scallion</span><span class="mi-price">$10.75</span></div>
+          <div class="menu-item"><span class="mi-name">w/ Vegetables Only</span><span class="mi-price">$10.75</span></div>
+          <div class="menu-item"><span class="mi-name">w/ Roast Pork</span><span class="mi-price">$11.25</span></div>
+          <div class="menu-item"><span class="mi-name">w/ Beef</span><span class="mi-price">$11.95</span></div>
+          <div class="menu-item"><span class="mi-name">w/ Shrimp</span><span class="mi-price">$11.95</span></div>
+          <div class="menu-item"><span class="mi-name">w/ Roast Duck</span><span class="mi-price">$14.95</span></div>
+          <div class="menu-item"><span class="mi-name">w/ Chicken</span><span class="mi-price">$11.25</span></div>
+          <div class="menu-item"><span class="mi-name">3D (Chicken/Pork/Shrimp)</span><span class="mi-price">$14.95</span></div>
+          <div class="menu-item"><span class="mi-name">4D (Chicken/Pork/Shrimp/Beef)</span><span class="mi-price">$15.95</span></div>
+          <div class="menu-item"><span class="mi-name">Wo Hop Special</span><span class="mi-price">$15.95</span></div>
+        </div>
+        <div class="menu-category-label">Chow Fun — Broad Rice Noodles</div>
+        <div class="menu-grid">
+          <div class="menu-item"><span class="mi-name">w/ Vegetables Only</span><span class="mi-price">$10.75</span></div>
+          <div class="menu-item"><span class="mi-name">w/ Roast Pork</span><span class="mi-price">$11.25</span></div>
+          <div class="menu-item"><span class="mi-name">w/ Beef</span><span class="mi-price">$11.95</span></div>
+          <div class="menu-item"><span class="mi-name">w/ Shrimp</span><span class="mi-price">$11.95</span></div>
+          <div class="menu-item"><span class="mi-name">w/ Chicken</span><span class="mi-price">$11.25</span></div>
+          <div class="menu-item"><span class="mi-name">w/ Roast Duck</span><span class="mi-price">$14.95</span></div>
+          <div class="menu-item"><span class="mi-name">3D (Chicken/Pork/Shrimp)</span><span class="mi-price">$14.95</span></div>
+          <div class="menu-item"><span class="mi-name">Wo Hop (Chicken/Pork/Shrimp/Squid)</span><span class="mi-price">$15.95</span></div>
+        </div>
+        <div class="menu-category-label">Chow Mein (Deep Fried Noodles)</div>
+        <div class="menu-grid">
+          <div class="menu-item"><span class="mi-name">w/ Chicken</span><span class="mi-price">$14.95</span></div>
+          <div class="menu-item"><span class="mi-name">w/ Beef</span><span class="mi-price">$15.95</span></div>
+          <div class="menu-item"><span class="mi-name">w/ Roast Pork</span><span class="mi-price">$14.95</span></div>
+          <div class="menu-item"><span class="mi-name">w/ Shrimp</span><span class="mi-price">$15.95</span></div>
+        </div>
+      </div>
+      <div class="menu-panel" id="tab-rice">
+        <div class="menu-category-label">Fried Rice</div>
+        <div class="menu-grid">
+          <div class="menu-item"><span class="mi-name">Fried Rice w/ Roast Pork</span><span class="mi-price">$10.95</span></div>
+          <div class="menu-item"><span class="mi-name">Fried Rice w/ Vegetables</span><span class="mi-price">$10.95</span></div>
+          <div class="menu-item"><span class="mi-name">Fried Rice w/ Chicken</span><span class="mi-price">$10.95</span></div>
+          <div class="menu-item"><span class="mi-name">Fried Rice w/ Shrimp</span><span class="mi-price">$11.50</span></div>
+          <div class="menu-item"><span class="mi-name">Young Chow Fried Rice</span><span class="mi-price">$13.50</span></div>
+          <div class="menu-item"><span class="mi-name">Fried Rice w/ Beef</span><span class="mi-price">$11.50</span></div>
+          <div class="menu-item"><span class="mi-name">Fried Rice w/ Duck</span><span class="mi-price">$14.95</span></div>
+          <div class="menu-item"><span class="mi-name">White Rice</span><span class="mi-price">$1.75</span></div>
+        </div>
+        <div class="menu-category-label">Rice Dishes</div>
+        <div class="menu-grid">
+          <div class="menu-item"><span class="mi-name">Rice w/ Shrimp &amp; Vegetables</span><span class="mi-price">$10.50</span></div>
+          <div class="menu-item"><span class="mi-name">Rice w/ Roast Pork &amp; Vegetables</span><span class="mi-price">$9.95</span></div>
+          <div class="menu-item"><span class="mi-name">Rice w/ Beef &amp; Tomatoes</span><span class="mi-price">$10.50</span></div>
+          <div class="menu-item"><span class="mi-name">Rice w/ Chicken &amp; Oyster Sauce</span><span class="mi-price">$9.95</span></div>
+          <div class="menu-item"><span class="mi-name">Rice w/ Shrimp &amp; Lobster Sauce</span><span class="mi-price">$15.95</span></div>
+          <div class="menu-item"><span class="mi-name">Rice w/ Beef &amp; Chinese Mushrooms</span><span class="mi-price">$10.50</span></div>
+        </div>
+      </div>
+      <div class="menu-panel" id="tab-poultry">
+        <div class="menu-grid">
+          <div class="menu-item"><span class="mi-name">General Tso's Chicken</span><span class="mi-price">$17.95</span></div>
+          <div class="menu-item"><span class="mi-name">Chicken w/ Sesame</span><span class="mi-price">$17.95</span></div>
+          <div class="menu-item"><span class="mi-name">Chicken w/ Orange</span><span class="mi-price">$17.95</span></div>
+          <div class="menu-item"><span class="mi-name">Chicken w/ Lemon</span><span class="mi-price">$17.95</span></div>
+          <div class="menu-item"><span class="mi-name">Chicken w/ Broccoli</span><span class="mi-price">$17.95</span></div>
+          <div class="menu-item"><span class="mi-name">Chicken w/ String Beans</span><span class="mi-price">$17.95</span></div>
+          <div class="menu-item"><span class="mi-name">Chicken Honey Sauce</span><span class="mi-price">$17.95</span></div>
+          <div class="menu-item"><span class="mi-name">Chicken Kow w/ Black Bean Sauce</span><span class="mi-price">$17.95</span></div>
+          <div class="menu-item"><span class="mi-name">Sliced Chicken w/ Snow Peas</span><span class="mi-price">$17.95</span></div>
+          <div class="menu-item"><span class="mi-name">Chicken Ding w/ Cashew Nuts</span><span class="mi-price">$17.95</span></div>
+          <div class="menu-item"><span class="mi-name">Chicken Ding w/ Almonds</span><span class="mi-price">$17.95</span></div>
+          <div class="menu-item"><span class="mi-name">Moo Shu Chicken (w/ 2 Pancakes)</span><span class="mi-price">$17.95</span></div>
+          <div class="menu-item"><span class="mi-name">Salt &amp; Pepper Chicken Wings</span><span class="mi-price">$16.95</span></div>
+          <div class="menu-item"><span class="mi-name">Moo Goo Gai Pan</span><span class="mi-price">$17.95</span></div>
+          <div class="menu-item"><span class="mi-name">Chicken Wings w/ Oyster Sauce</span><span class="mi-price">$17.95</span></div>
+        </div>
+      </div>
+      <div class="menu-panel" id="tab-beef">
+        <div class="menu-grid">
+          <div class="menu-item"><span class="mi-name">Beef w/ Green Peppers &amp; Onions</span><span class="mi-price">$18.95</span></div>
+          <div class="menu-item"><span class="mi-name">Beef w/ String Beans</span><span class="mi-price">$18.95</span></div>
+          <div class="menu-item"><span class="mi-name">Beef w/ Black Bean Sauce</span><span class="mi-price">$19.95</span></div>
+          <div class="menu-item"><span class="mi-name">Beef w/ Snow Peas &amp; Oyster Sauce</span><span class="mi-price">$18.95</span></div>
+          <div class="menu-item"><span class="mi-name">Beef w/ Broccoli</span><span class="mi-price">$18.95</span></div>
+          <div class="menu-item"><span class="mi-name">Beef w/ Chinese Vegetables</span><span class="mi-price">$19.95</span></div>
+          <div class="menu-item"><span class="mi-name">Beef w/ French Mushrooms</span><span class="mi-price">$19.95</span></div>
+          <div class="menu-item"><span class="mi-name">Beef w/ Green Peppers &amp; Tomatoes</span><span class="mi-price">$18.95</span></div>
+          <div class="menu-item"><span class="mi-name">Beef w/ Oyster Sauce</span><span class="mi-price">$19.95</span></div>
+          <div class="menu-item"><span class="mi-name">Beef w/ Onions</span><span class="mi-price">$18.95</span></div>
+          <div class="menu-item"><span class="mi-name">Beef w/ Scallions</span><span class="mi-price">$22.95</span></div>
+          <div class="menu-item"><span class="mi-name">Beef w/ Asparagus</span><span class="mi-price">$22.95</span></div>
+          <div class="menu-item"><span class="mi-name">Beef Honey Sauce</span><span class="mi-price">$20.95</span></div>
+          <div class="menu-item"><span class="mi-name">Sesame Beef</span><span class="mi-price">$20.95</span></div>
+          <div class="menu-item"><span class="mi-name">Steak Kew</span><span class="mi-price">$20.95</span></div>
+        </div>
+      </div>
+      <div class="menu-panel" id="tab-pork">
+        <div class="menu-grid">
+          <div class="menu-item"><span class="mi-name">Fried Pork Chops w/ Salt &amp; Pepper</span><span class="mi-price">$17.95</span></div>
+          <div class="menu-item"><span class="mi-name">Peking Pork</span><span class="mi-price">$17.95</span></div>
+          <div class="menu-item"><span class="mi-name">Roast Pork w/ Green Peppers &amp; Onions</span><span class="mi-price">$17.95</span></div>
+          <div class="menu-item"><span class="mi-name">Roast Pork w/ String Beans</span><span class="mi-price">$17.95</span></div>
+          <div class="menu-item"><span class="mi-name">Roast Pork w/ Oyster Sauce</span><span class="mi-price">$18.95</span></div>
+          <div class="menu-item"><span class="mi-name">Roast Pork w/ Chinese Vegetables</span><span class="mi-price">$17.95</span></div>
+          <div class="menu-item"><span class="mi-name">Roast Pork w/ Chinese Mushrooms</span><span class="mi-price">$18.95</span></div>
+          <div class="menu-item"><span class="mi-name">Roast Pork w/ Black Bean Sauce</span><span class="mi-price">$18.95</span></div>
+          <div class="menu-item"><span class="mi-name">Roast Pork w/ Broccoli</span><span class="mi-price">$17.95</span></div>
+          <div class="menu-item"><span class="mi-name">Moo Shu Pork (w/ 2 Pancakes)</span><span class="mi-price">$17.95</span></div>
+          <div class="menu-item"><span class="mi-name">Spare Ribs w/ Black Bean Sauce</span><span class="mi-price">$16.95</span></div>
+          <div class="menu-item"><span class="mi-name">Sweet &amp; Sour Pork</span><span class="mi-price">$17.95</span></div>
+          <div class="menu-item"><span class="mi-name">Hunan Crispy Sliced Pork</span><span class="mi-price">$17.95</span></div>
+        </div>
+      </div>
+      <div class="menu-panel" id="tab-seafood">
+        <div class="menu-grid">
+          <div class="menu-item"><span class="mi-name">Shrimp Ding w/ Cashew Nuts</span><span class="mi-price">$18.95</span></div>
+          <div class="menu-item"><span class="mi-name">Fresh Shrimp w/ Mixed Vegetables</span><span class="mi-price">$18.95</span></div>
+          <div class="menu-item"><span class="mi-name">Fresh Shrimp w/ Black Bean Sauce</span><span class="mi-price">$19.95</span></div>
+          <div class="menu-item"><span class="mi-name">Jumbo Shrimp w/ Lobster Sauce</span><span class="mi-price">$21.95</span></div>
+          <div class="menu-item"><span class="mi-name">Jumbo Shrimp w/ Broccoli</span><span class="mi-price">$21.95</span></div>
+          <div class="menu-item"><span class="mi-name">Jumbo Shrimp w/ Salt &amp; Pepper</span><span class="mi-price">$21.95</span></div>
+          <div class="menu-item"><span class="mi-name">Butterfly Shrimp</span><span class="mi-price">$25.95</span></div>
+          <div class="menu-item"><span class="mi-name">Fried Jumbo Shrimp w/ Walnuts</span><span class="mi-price">$25.95</span></div>
+          <div class="menu-item"><span class="mi-name">Scallops w/ Black Bean Sauce</span><span class="mi-price">$25.95</span></div>
+          <div class="menu-item"><span class="mi-name">Crispy Scallop w/ Salt &amp; Pepper</span><span class="mi-price">$25.95</span></div>
+          <div class="menu-item"><span class="mi-name">Pan Fried Flounder</span><span class="mi-price">$25.95</span></div>
+          <div class="menu-item"><span class="mi-name">Braised Fish (Sea Bass)</span><span class="mi-price">$25.95</span></div>
+          <div class="menu-item"><span class="mi-name">Steamed Sea Bass</span><span class="mi-price">$25.95</span></div>
+          <div class="menu-item"><span class="mi-name">Lobster — Szechuan Style</span><span class="mi-price">$32.95</span></div>
+          <div class="menu-item"><span class="mi-name">Lobster w/ Ginger &amp; Scallions</span><span class="mi-price">$32.95</span></div>
+          <div class="menu-item"><span class="mi-name">Clams w/ Black Bean Sauce</span><span class="mi-price">$20.95</span></div>
+          <div class="menu-item"><span class="mi-name">Squid w/ Black Bean Sauce</span><span class="mi-price">$18.95</span></div>
+          <div class="menu-item"><span class="mi-name">Fried Squid w/ Salt &amp; Pepper</span><span class="mi-price">$18.95</span></div>
+          <div class="menu-item"><span class="mi-name">Crabs Cantonese Style</span><span class="mi-price">$22.95</span></div>
+          <div class="menu-item"><span class="mi-name">Crabs w/ Ginger &amp; Scallions</span><span class="mi-price">$22.95</span></div>
+          <div class="menu-item"><span class="mi-name">Spicy Crispy Sea Bass Hunan Style</span><span class="mi-price">$25.95</span></div>
+        </div>
+      </div>
+      <div class="menu-panel" id="tab-szechuan">
+        <div class="menu-grid">
+          <div class="menu-item"><span class="mi-name">Szechuan Shrimp</span><span class="mi-price">$21.95</span></div>
+          <div class="menu-item"><span class="mi-name">Shrimp w/ Garlic Sauce</span><span class="mi-price">$17.95</span></div>
+          <div class="menu-item"><span class="mi-name">Szechuan Chicken</span><span class="mi-price">$17.95</span></div>
+          <div class="menu-item"><span class="mi-name">Sliced Chicken w/ Garlic Sauce</span><span class="mi-price">$17.95</span></div>
+          <div class="menu-item"><span class="mi-name">Chicken w/ Curry Sauce</span><span class="mi-price">$17.95</span></div>
+          <div class="menu-item"><span class="mi-name">Shredded Beef Szechuan Style</span><span class="mi-price">$18.95</span></div>
+          <div class="menu-item"><span class="mi-name">Beef w/ Garlic Sauce</span><span class="mi-price">$18.95</span></div>
+          <div class="menu-item"><span class="mi-name">Beef w/ Hot Curry Sauce</span><span class="mi-price">$18.95</span></div>
+          <div class="menu-item"><span class="mi-name">Eggplant w/ Garlic Sauce</span><span class="mi-price">$14.95</span></div>
+          <div class="menu-item"><span class="mi-name">String Beans w/ Garlic Sauce</span><span class="mi-price">$14.95</span></div>
+          <div class="menu-item"><span class="mi-name">Fried Fish Filet Szechuan Style</span><span class="mi-price">$17.95</span></div>
+          <div class="menu-item"><span class="mi-name">Goon Bo Chicken</span><span class="mi-price">$17.95</span></div>
+          <div class="menu-item"><span class="mi-name">Goon Bo Shrimp</span><span class="mi-price">$18.95</span></div>
+          <div class="menu-item"><span class="mi-name">Goon Bo Beef</span><span class="mi-price">$20.95</span></div>
+          <div class="menu-item"><span class="mi-name">Scallops w/ Garlic Sauce</span><span class="mi-price">$25.95</span></div>
+        </div>
+      </div>
+      <div class="menu-panel" id="tab-specialties">
+        <div class="menu-grid">
+          <div class="menu-item"><span class="mi-name">Four Season (Shrimp/Chicken/Pork/Beef)</span><span class="mi-price">$21.95</span></div>
+          <div class="menu-item"><span class="mi-name">Sam Gip Dai (Chicken/Pork/Shrimp/Veg)</span><span class="mi-price">$19.95</span></div>
+          <div class="menu-item"><span class="mi-name">Seafood Delight</span><span class="mi-price">$25.95</span></div>
+          <div class="menu-item"><span class="mi-name">Chow Gai Kew (Chicken &amp; Vegetables)</span><span class="mi-price">$17.95</span></div>
+          <div class="menu-item"><span class="mi-name">Triple in Bird's Nest</span><span class="mi-price">$25.95</span></div>
+          <div class="menu-item"><span class="mi-name">Wor Shu Duck</span><span class="mi-price">$22.95</span></div>
+          <div class="menu-item"><span class="mi-name">Pineapple Duck</span><span class="mi-price">$22.95</span></div>
+          <div class="menu-item"><span class="mi-name">Sweet &amp; Sour Boneless Duck</span><span class="mi-price">$22.95</span></div>
+          <div class="menu-item"><span class="mi-name">Roast Duck (Half)</span><span class="mi-price">$27.95</span></div>
+          <div class="menu-item"><span class="mi-name">Sweet &amp; Sour Chicken</span><span class="mi-price">$17.95</span></div>
+          <div class="menu-item"><span class="mi-name">Sweet &amp; Sour Shrimp</span><span class="mi-price">$21.95</span></div>
+          <div class="menu-item"><span class="mi-name">Tad Par Steak</span><span class="mi-price">$20.95</span></div>
+        </div>
+      </div>
+    </div>
+    <div class="menu-note reveal">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+      <span>Cash only. No reservations. Complimentary hot tea, crispy wonton chips &amp; duck sauce with every meal.</span>
+    </div>
+  </div>
+</section>
+
+<!-- ORDER -->
+<section id="order">
+  <div class="order-container">
+    <div class="order-left reveal-left">
+      <div class="section-eyebrow">Order &amp; Catering</div>
+      <h2 class="section-title">Ready When <em>You Are</em></h2>
+      <p>Order online for pickup, reach us directly for catering, or shop the iconic Wo Hop T-shirt — worn by New Yorkers for generations.</p>
+      <div class="order-options">
+        <a href="tel:2129628617" class="order-card">
+          <div class="oc-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.82a19.79 19.79 0 01-3.07-8.65A2 2 0 012 .02h3a2 2 0 012 1.72 19.76 19.76 0 00.7 2.81 2 2 0 01-.45 2.11L6.09 7.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45 19.76 19.76 0 002.81.7A2 2 0 0122 14.92z"/></svg></div>
+          <div class="oc-text"><span class="oc-label">Call to Order</span><span class="oc-value">(212) 962-8617</span></div>
+        </a>
+        <a href="https://www.wohop17.com" target="_blank" rel="noopener" class="order-card">
+          <div class="oc-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 014 10 15.3 15.3 0 01-4 10 15.3 15.3 0 01-4-10 15.3 15.3 0 014-10z"/></svg></div>
+          <div class="oc-text"><span class="oc-label">Order Online</span><span class="oc-value">wohop17.com</span></div>
+        </a>
+        <a href="mailto:info@wohop17.com" class="order-card">
+          <div class="oc-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg></div>
+          <div class="oc-text"><span class="oc-label">Catering &amp; Events</span><span class="oc-value">Contact Us</span></div>
+        </a>
+      </div>
+    </div>
+    <div class="order-right reveal-right">
+      <div class="merch-card">
+        <div class="merch-shirt">
+          <div class="shirt-body">
+            <div class="shirt-collar"></div>
+            <div class="shirt-print">
+              <div class="sp-cn">和合</div>
+              <div class="sp-en">WO HOP</div>
+              <div class="sp-addr">17 MOTT ST · NYC · EST. 1938</div>
+            </div>
+          </div>
+        </div>
+        <div class="merch-info">
+          <h3>The Iconic T-Shirt</h3>
+          <p>100% cotton, silk-screened. Worn by New Yorkers, visitors, and celebrities for decades.</p>
+          <a href="https://www.wohop17.com" target="_blank" rel="noopener" class="btn-gold">Shop Merchandise</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- GALLERY -->
+<section id="gallery">
+  <div class="gallery-container">
+    <div class="section-header">
+      <div class="section-eyebrow reveal">Atmosphere</div>
+      <h2 class="section-title reveal">The Soul of <em>Mott Street</em></h2>
+    </div>
+    <div class="gallery-grid">
+
+      <div class="gallery-card gc-tall reveal">
+        <div class="gc-img-wrap">
+          <img
+            src="https://images.unsplash.com/photo-1555126634-323283e090fa?auto=format&fit=crop&w=600&q=75"
+            alt="NYC Chinatown street"
+            loading="lazy" decoding="async"
+            width="600" height="800"
+            onerror="this.parentElement.classList.add('img-failed')">
+          <div class="gc-fallback-art">
+            <div class="gc-lanterns"><div class="lantern l1"></div><div class="lantern l2"></div><div class="lantern l3"></div></div>
+            <div class="gc-street-text">MOTT ST</div>
+          </div>
+        </div>
+        <div class="gc-overlay">
+          <span class="gc-caption">Chinatown, New York</span>
+        </div>
+      </div>
+
+      <div class="gallery-card reveal" data-delay="100">
+        <div class="gc-img-wrap">
+          <img
+            src="https://images.unsplash.com/photo-1552566626-52f8b828add9?auto=format&fit=crop&w=600&q=75"
+            alt="Chinese restaurant interior"
+            loading="lazy" decoding="async"
+            width="600" height="400"
+            onerror="this.parentElement.classList.add('img-failed')">
+          <div class="gc-fallback-art">
+            <div class="gc-neon">WO HOP</div><div class="gc-glow"></div>
+          </div>
+        </div>
+        <div class="gc-overlay"><span class="gc-caption">Restaurant Atmosphere</span></div>
+      </div>
+
+      <div class="gallery-card reveal" data-delay="150">
+        <div class="gc-img-wrap">
+          <img
+            src="https://images.unsplash.com/photo-1563245372-f21724e3856d?auto=format&fit=crop&w=600&q=75"
+            alt="Noodle dish Cantonese"
+            loading="lazy" decoding="async"
+            width="600" height="400"
+            onerror="this.parentElement.classList.add('img-failed')">
+          <div class="gc-fallback-art">
+            <div class="gc-walls"><div class="gc-photo p1"></div><div class="gc-photo p2"></div><div class="gc-photo p3"></div><div class="gc-photo p4"></div></div>
+          </div>
+        </div>
+        <div class="gc-overlay"><span class="gc-caption">Cantonese Noodle Dish</span></div>
+      </div>
+
+      <div class="gallery-card gc-tall reveal" data-delay="200">
+        <div class="gc-img-wrap">
+          <img
+            src="https://images.unsplash.com/photo-1547592180-85f173990554?auto=format&fit=crop&w=600&q=75"
+            alt="Wok cooking Chinese kitchen"
+            loading="lazy" decoding="async"
+            width="600" height="800"
+            onerror="this.parentElement.classList.add('img-failed')">
+          <div class="gc-fallback-art">
+            <div class="gc-wok-fire"><div class="wok-flame wf1"></div><div class="wok-flame wf2"></div><div class="wok-flame wf3"></div></div>
+            <div class="gc-wok"></div>
+          </div>
+        </div>
+        <div class="gc-overlay"><span class="gc-caption">The Kitchen — Wok Hei</span></div>
+      </div>
+
+      <div class="gallery-card reveal" data-delay="100">
+        <div class="gc-img-wrap">
+          <img
+            src="https://images.unsplash.com/photo-1569050467447-ce54b3bbc37d?auto=format&fit=crop&w=600&q=75"
+            alt="Wonton soup bowl"
+            loading="lazy" decoding="async"
+            width="600" height="400"
+            onerror="this.parentElement.classList.add('img-failed')">
+          <div class="gc-fallback-art"><div class="gc-neon" style="font-size:12px;color:var(--gold)">WONTON SOUP</div></div>
+        </div>
+        <div class="gc-overlay"><span class="gc-caption">Iconic Wonton Soup</span></div>
+      </div>
+
+      <div class="gallery-card reveal" data-delay="200">
+        <div class="gc-img-wrap">
+          <img
+            src="https://images.unsplash.com/photo-1585032226651-759b368d7246?auto=format&fit=crop&w=600&q=75"
+            alt="Stir fry noodles chow fun"
+            loading="lazy" decoding="async"
+            width="600" height="400"
+            onerror="this.parentElement.classList.add('img-failed')">
+          <div class="gc-fallback-art"><div class="gc-neon" style="font-size:12px;color:var(--gold)">CHOW FUN</div></div>
+        </div>
+        <div class="gc-overlay"><span class="gc-caption">Beef Chow Fun</span></div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- TESTIMONIALS -->
+<section id="testimonials">
+  <div class="testimonials-container">
+    <div class="section-eyebrow reveal" style="text-align:center">What People Say</div>
+    <h2 class="section-title reveal" style="text-align:center">Loved by <em>Generations</em></h2>
+    <div class="testimonials-track" id="testimonialsTrack">
+      <div class="testimonial-card"><div class="tc-stars">★★★★★</div><p>"An authentic taste of an inauthentic past — and that's exactly why we love it."</p><div class="tc-author">— The New York Times</div></div>
+      <div class="testimonial-card"><div class="tc-stars">★★★★★</div><p>"The wonton soup here is the best I've had in years. Pure soul in a bowl."</p><div class="tc-author">— Yelp Reviewer</div></div>
+      <div class="testimonial-card"><div class="tc-stars">★★★★★</div><p>"We've been coming here for thirty years. The food hasn't changed. That's a compliment."</p><div class="tc-author">— Loyal Regular, Resy</div></div>
+      <div class="testimonial-card"><div class="tc-stars">★★★★★</div><p>"Big portions, low prices, and legendary egg foo young. Wo Hop is irreplaceable."</p><div class="tc-author">— TripAdvisor</div></div>
+      <div class="testimonial-card"><div class="tc-stars">★★★★★</div><p>"A NYC institution. The beef chow fun has wok hei you simply can't find anywhere else."</p><div class="tc-author">— Roadfood</div></div>
+    </div>
+    <div class="testimonials-dots" id="testimonialsDots"></div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="contact-container">
+    <div class="contact-left reveal-left">
+      <div class="section-eyebrow">Visit Us</div>
+      <h2 class="section-title">Find Us on <em>Mott Street</em></h2>
+      <div class="contact-details">
+        <div class="cd-item"><div class="cd-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg></div><div class="cd-text"><span class="cd-label">Address</span><span class="cd-value">17 Mott St, Basement<br>New York, NY 10013<br><em>(Look for the stairs going down)</em></span></div></div>
+        <div class="cd-item"><div class="cd-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg></div><div class="cd-text"><span class="cd-label">Hours</span><span class="cd-value">Monday – Saturday: 10:30 AM – 10:00 PM<br>Sunday: 10:30 AM – 9:00 PM</span></div></div>
+        <div class="cd-item"><div class="cd-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.82a19.79 19.79 0 01-3.07-8.65A2 2 0 012 .02h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.09 7.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 14.92z"/></svg></div><div class="cd-text"><span class="cd-label">Phone</span><span class="cd-value"><a href="tel:2129628617">(212) 962-8617</a><br><a href="tel:2122672536">(212) 267-2536</a></span></div></div>
+        <div class="cd-item"><div class="cd-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg></div><div class="cd-text"><span class="cd-label">Important</span><span class="cd-value">Cash only · No reservations · No credit cards</span></div></div>
+      </div>
+      <div class="contact-social">
+        <a href="https://www.facebook.com/wohop17" target="_blank" rel="noopener" class="social-btn"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z"/></svg>Facebook</a>
+        <a href="https://twitter.com/wohop17" target="_blank" rel="noopener" class="social-btn"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M23 3a10.9 10.9 0 01-3.14 1.53 4.48 4.48 0 00-7.86 3v1A10.66 10.66 0 013 4s-4 9 5 13a11.64 11.64 0 01-7 2c9 5 20 0 20-11.5a4.5 4.5 0 00-.08-.83A7.72 7.72 0 0023 3z"/></svg>@wohop17</a>
+      </div>
+    </div>
+    <div class="contact-right reveal-right">
+      <div class="map-frame">
+        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3024.2219901290355!2d-73.99958368459418!3d40.71458597933005!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89c25a2232e849e1%3A0x8f87d50f73d2c8a0!2sWo%20Hop%20Restaurant!5e0!3m2!1sen!2sus!4v1620000000000!5m2!1sen!2sus" width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade" title="Wo Hop Restaurant on Google Maps"></iframe>
+      </div>
+      <div class="map-caption"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" width="16" height="16"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>Look for the staircase going underground — that's where the magic happens.</div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer id="footer">
+  <div class="footer-inner">
+    <div class="footer-top">
+      <div class="footer-brand">
+        <div class="footer-logo"><span class="logo-cn">和合</span><span class="logo-en">WO HOP</span></div>
+        <p>New York's legendary Cantonese kitchen.<br>17 Mott Street · Chinatown · Since 1938.</p>
+        <div class="footer-award"><svg viewBox="0 0 20 20" fill="#D4AF37" width="16" height="16"><polygon points="10,1 12.9,7 19.5,7.6 14.5,12 16.2,18.5 10,15 3.8,18.5 5.5,12 0.5,7.6 7.1,7"/></svg><span>James Beard America's Classic 2022</span></div>
+      </div>
+      <div class="footer-links">
+        <div class="footer-col"><h4>Navigate</h4><a href="#about">Our Story</a><a href="#dishes">Signature Dishes</a><a href="#menu">Full Menu</a><a href="#order">Order Online</a><a href="#contact">Visit Us</a></div>
+        <div class="footer-col"><h4>Contact</h4><a href="tel:2129628617">(212) 962-8617</a><a href="tel:2122672536">(212) 267-2536</a><span>17 Mott St, Basement</span><span>New York, NY 10013</span></div>
+        <div class="footer-col"><h4>Hours</h4><span>Mon–Sat: 10:30 AM – 10 PM</span><span>Sunday: 10:30 AM – 9 PM</span><span class="cash-note">Cash Only · No Reservations</span></div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>&copy; 2025 Wo Hop Restaurant. All rights reserved.</span>
+      <span>17 Mott Street · Manhattan's Chinatown · New York, NY 10013</span>
+    </div>
+  </div>
+</footer>
+
+<script src="script.js"></script>
+</body>
+</html>
